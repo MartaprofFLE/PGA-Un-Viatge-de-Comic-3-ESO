@@ -1,0 +1,1456 @@
+
+
+<!DOCTYPE html>
+
+<html lang="ca">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Un Viatge de Còmic · PGA 3r ESO · 2026-2027</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700;900&display=swap');
+
+  :root {
+    --black: #111;
+    --yellow: #FFE600;
+    --red: #E8003D;
+    --blue: #005FCC;
+    --lightblue: #C8E6FF;
+    --green: #00B050;
+    --lightgreen: #C6EFCE;
+    --orange: #FF6B00;
+    --purple: #7B2FBE;
+    --bg: #FFF9E6;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Nunito', sans-serif;
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── HALFTONE BG ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, #FFE600 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: .18;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background: var(--yellow);
+    border-bottom: 5px solid var(--black);
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-zigzag {
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 36px;
+    background: linear-gradient(135deg, var(--bg) 25%, transparent 25%) -20px 0,
+                linear-gradient(225deg, var(--bg) 25%, transparent 25%) -20px 0,
+                linear-gradient(315deg, var(--bg) 25%, transparent 25%),
+                linear-gradient(45deg,  var(--bg) 25%, transparent 25%);
+    background-size: 40px 40px;
+    background-color: var(--yellow);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px 60px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 5px 18px;
+    border: 3px solid var(--black);
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 var(--black);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(3rem, 10vw, 7rem);
+    letter-spacing: 4px;
+    color: var(--black);
+    text-shadow: 6px 6px 0 var(--red), 8px 8px 0 rgba(0,0,0,.2);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 span { color: var(--blue); }
+
+  .hero-sub {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 28px;
+  }
+
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .chip {
+    background: var(--white);
+    border: 3px solid var(--black);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-weight: 700;
+    font-size: .9rem;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+
+  .chip.red   { background: var(--red);    color: #fff; }
+  .chip.blue  { background: var(--blue);   color: #fff; }
+  .chip.green { background: var(--green);  color: #fff; }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px;
+  }
+
+  .section-title {
+    font-family: 'Bangers', cursive;
+    font-size: 2.6rem;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .section-title .icon {
+    width: 52px; height: 52px;
+    background: var(--yellow);
+    border: 4px solid var(--black);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 4px 4px 0 var(--black);
+    flex-shrink: 0;
+  }
+
+  /* ── SPEECH BUBBLE ── */
+  .bubble {
+    background: var(--white);
+    border: 4px solid var(--black);
+    border-radius: 18px;
+    padding: 22px 28px;
+    position: relative;
+    box-shadow: 5px 5px 0 var(--black);
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -22px; left: 40px;
+    width: 0; height: 0;
+    border-left: 14px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 22px solid var(--black);
+  }
+
+  .bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -15px; left: 42px;
+    width: 0; height: 0;
+    border-left: 12px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 18px solid var(--white);
+    z-index: 1;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 6px;
+    background: var(--black);
+    transform: translateX(-50%);
+    border-radius: 3px;
+  }
+
+  .tl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .tl-item:nth-child(even) { flex-direction: row-reverse; }
+
+  .tl-content {
+    width: calc(50% - 50px);
+    background: var(--white);
+    border: 4px solid var(--black);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 var(--black);
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+  }
+
+  .tl-content:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 8px 8px 0 var(--black);
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: 50%;
+    top: 18px;
+    transform: translateX(-50%);
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: 4px solid var(--black);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    z-index: 2;
+    box-shadow: 3px 3px 0 var(--black);
+  }
+
+  .tl-era {
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .tl-desc { font-size: .92rem; line-height: 1.6; color: #333; }
+
+  .tl-tag {
+    display: inline-block;
+    font-size: .75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 2px solid var(--black);
+    margin-top: 10px;
+  }
+
+  .tl-sessions {
+    display: inline-block;
+    font-size: .8rem;
+    font-weight: 900;
+    background: var(--yellow);
+    border: 2px solid var(--black);
+    border-radius: 999px;
+    padding: 2px 10px;
+    margin-left: 8px;
+  }
+
+  /* ── DETAIL PANEL (accordion) ── */
+  .tl-detail {
+    display: none;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 2px dashed var(--black);
+    font-size: .9rem;
+    line-height: 1.6;
+  }
+
+  .tl-content.open .tl-detail { display: block; }
+  .tl-content.open { background: var(--lightblue); }
+
+  /* ── ACTIVITY CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 4px solid var(--black);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 var(--black);
+    transition: transform .15s, box-shadow .15s;
+    cursor: default;
+  }
+
+  .card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 9px 9px 0 var(--black);
+  }
+
+  .card-header {
+    padding: 16px 20px 12px;
+    border-bottom: 4px solid var(--black);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .card-num {
+    font-family: 'Bangers', cursive;
+    font-size: 2.2rem;
+    line-height: 1;
+    opacity: .15;
+  }
+
+  .card-icon { font-size: 2rem; }
+
+  .card-title {
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .card-body { padding: 16px 20px; font-size: .92rem; line-height: 1.65; }
+
+  .card-footer {
+    padding: 10px 20px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pill {
+    font-size: .75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 2px solid var(--black);
+  }
+
+  .pill.yellow  { background: var(--yellow); }
+  .pill.red     { background: var(--red);    color: #fff; }
+  .pill.blue    { background: var(--blue);   color: #fff; }
+  .pill.green   { background: var(--green);  color: #fff; }
+  .pill.orange  { background: var(--orange); color: #fff; }
+  .pill.purple  { background: var(--purple); color: #fff; }
+  .pill.white   { background: var(--white); }
+
+  /* ── RUBRIC ── */
+  .rubric {
+    border: 4px solid var(--black);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 var(--black);
+    margin-bottom: 28px;
+  }
+
+  .rubric-head {
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rubric-levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rubric-level {
+    padding: 16px 18px;
+    border-right: 3px solid var(--black);
+    font-size: .88rem;
+    line-height: 1.6;
+  }
+
+  .rubric-level:last-child { border-right: none; }
+
+  .level-name {
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sat  { background: #FFF5C8; }
+  .not  { background: #D6EAF8; }
+  .exc  { background: #D5F5E3; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    background: var(--white);
+    border: 4px solid var(--black);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 5px 5px 0 var(--black);
+    margin-bottom: 20px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px 0;
+    font-weight: 700;
+    font-size: .95rem;
+  }
+
+  .progress-bar-bg {
+    margin: 8px 16px 12px;
+    background: #eee;
+    border-radius: 99px;
+    height: 18px;
+    border: 2px solid var(--black);
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 1s ease;
+  }
+
+  /* ── PANEL COLORS ── */
+  .panel-red    { background: #FFD6E0; border-color: var(--red); }
+  .panel-blue   { background: var(--lightblue); border-color: var(--blue); }
+  .panel-green  { background: var(--lightgreen); border-color: var(--green); }
+  .panel-yellow { background: #FFFACC; border-color: #CCA800; }
+  .panel-purple { background: #EDE0FF; border-color: var(--purple); }
+  .panel-orange { background: #FFE8CC; border-color: var(--orange); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto 0;
+    padding: 0 20px;
+    max-width: 1100px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 4px;
+    background: var(--black);
+    border-radius: 2px;
+  }
+  .divider-icon {
+    font-size: 2rem;
+    border: 4px solid var(--black);
+    border-radius: 50%;
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--yellow);
+    box-shadow: 3px 3px 0 var(--black);
+  }
+
+  /* ── INTRO BOX ── */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .intro-box {
+    border: 4px solid var(--black);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 var(--black);
+    font-size: .95rem;
+    line-height: 1.7;
+  }
+
+  .intro-box h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Bangers', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 22px 20px;
+    margin-top: 60px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .timeline-line { left: 24px; }
+    .tl-item, .tl-item:nth-child(even) { flex-direction: column; padding-left: 64px; }
+    .tl-dot { left: 24px; top: 14px; }
+    .tl-content { width: 100%; }
+    .intro-grid { grid-template-columns: 1fr; }
+    .rubric-levels { grid-template-columns: 1fr; }
+    .rubric-level { border-right: none; border-bottom: 2px solid var(--black); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--black);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 4px solid var(--yellow);
+  }
+  nav a {
+    color: var(--yellow);
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    padding: 14px 22px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .15s;
+  }
+  nav a:hover { background: #333; }
+  nav a.active { background: var(--yellow); color: var(--black); }
+
+  /* ── STAR RATING ── */
+  .stars { font-size: 1.4rem; letter-spacing: 2px; }
+
+  /* ── ACCORDION ARROW ── */
+  .tl-toggle {
+    font-size: .8rem;
+    font-weight: 700;
+    margin-top: 8px;
+    color: var(--blue);
+    cursor: pointer;
+    display: inline-block;
+  }
+  .tl-content.open .tl-toggle::after { content: ' ▲ tancar'; }
+  .tl-content:not(.open) .tl-toggle::after { content: ' ▼ veure més'; }
+
+  ul.fancy { list-style: none; }
+  ul.fancy li::before { content: '▸ '; color: var(--red); font-weight: 900; }
+
+  .video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--red);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px dashed var(--red);
+  }
+
+  /* ── RESOURCE BOXES ── */
+  .res-box {
+    background: #fff;
+    border: 2.5px solid var(--black);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: .88rem;
+  }
+  .res-box-title {
+    font-weight: 900;
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    color: #555;
+  }
+  .res-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 4px 0;
+    border-bottom: 1px dashed #ccc;
+    color: var(--blue);
+    transition: color .1s;
+  }
+  .res-link:last-child { border-bottom: none; }
+  .res-link:hover { color: var(--red); }
+  .res-link .badge {
+    font-size: .7rem;
+    background: var(--yellow);
+    border: 1.5px solid var(--black);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: #000;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .res-link .badge.verd { background: var(--lightgreen); }
+  .res-link .badge.blau { background: var(--lightblue); }
+  .session-block {
+    background: #f8f8f8;
+    border-left: 4px solid var(--black);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 10px 0;
+  }
+  .session-title {
+    font-family: 'Bangers', cursive;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+<a class="active" href="#presentacio">Presentació</a>
+<a href="#viatge">El Viatge</a>
+<a href="#activitats">Activitats</a>
+<a href="#avaluacio">Avaluació</a>
+<a href="#eines">Eines</a>
+</nav>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-inner">
+<div class="hero-badge">Institut del Voltreganès · 3r ESO · PGA Llengües Estrangeres</div>
+<h1>Un Viatge<br/><span>de Còmic</span></h1>
+<div class="hero-chips">
+<span class="chip red">Prehistòria</span>
+<span class="chip">Egipte</span>
+<span class="chip blue">Món Clàssic</span>
+<span class="chip green">Còmic Modern</span>
+<span class="chip">Creació pròpia</span>
+</div>
+</div>
+<div class="hero-zigzag"></div>
+</div>
+<!-- ═══════════════════════════════ PRESENTACIÓ ═══════════════ -->
+<section id="presentacio">
+<div class="section-title">
+<div class="icon"></div>
+    De què va tot això?
+  </div>
+<div class="bubble">
+    En aquesta PGA fareu un viatge en el temps a través del món del <strong>còmic</strong>! Explorareu com la narració gràfica ha evolucionat des de les pintures rupestres fins als còmics contemporanis. Al final del curs, creareu el <strong>vostre propi còmic</strong> amb personatges situats en èpoques de la història. 
+  </div>
+<div style="height:30px"></div>
+<div class="intro-grid">
+<div class="intro-box panel-yellow">
+<h3>Què aprendreu?</h3>
+<ul class="fancy">
+<li>La història del còmic i la narració gràfica al llarg del temps</li>
+<li>Com funcionen les vinyetes, els enquadraments i el color</li>
+<li>A crear personatges de còmic contextualitzats històricament</li>
+<li>A explicar la vostra historia en veu alta de manera clara</li>
+</ul>
+</div>
+<div class="intro-box panel-blue">
+<h3>Producte final (3r trimestre)</h3>
+<p>Al tercer trimestre creareu un <strong>còmic en grups de 4 o 5 persones</strong> a partir d'un <strong>guió proporcionat per la professora</strong> — diferent per a cada grup classe — on <em>vosaltres mateixos sereu els protagonistes</em> d'una història que tindrà lloc a l'<strong>Institut del Voltreganès</strong>.</p>
+<br/>
+<p style="font-size:.88rem;color:#555;margin-bottom:10px;">Aquest còmic final és diferent dels petits còmics de pràctica que fareu per a cada període històric durant el curs.</p>
+<ul class="fancy">
+<li>Guió facilitat per la professora (específic per a cada grup classe)</li>
+<li>Grups de <strong>4 o 5 persones</strong>, cada alumne/a amb un <strong>rol determinat</strong></li>
+<li>Història ambientada a l'institut, vosaltres com a protagonistes</li>
+<li>Entre <strong>5 i 6 vinyetes per escena</strong></li>
+<li>Diàlegs i textos en <strong>català</strong></li>
+<li>Presentació oral del producte final</li>
+</ul>
+</div>
+<div class="intro-box panel-green">
+<h3>Organització</h3>
+<ul class="fancy">
+<li><strong>35 sessions</strong> al llarg del curs</li>
+<li>Una sessió per setmana</li>
+<li>Treball individual i grupal (s'anirà concretant)</li>
+<li>Presentació final a finals de curs</li>
+</ul>
+</div>
+<div class="intro-box panel-red">
+<h3>Per tenir en compte</h3>
+<ul class="fancy">
+<li>Els vídeos tindran subtítols si cal</li>
+<li>Es pot demanar temps extra si es necessita</li>
+<li>La professora us guiarà en tot moment</li>
+<li>L'autoavaluació forma part de la nota</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-icon"></div><div class="divider-line"></div></div>
+<!-- ═══════════════════════════════ EL VIATGE ═══════════════ -->
+<section id="viatge">
+<div class="section-title">
+<div class="icon"></div>
+    El Viatge per la Història del Còmic
+  </div>
+<p style="font-size:1.05rem; margin-bottom:32px; font-weight:600;">
+    Cada eix cronològic és una parada del vostre viatge. Cliqueu sobre cada parada per saber-ne més! 
+  </p>
+<div class="timeline">
+<div class="timeline-line"></div>
+<!-- 1 PREHISTÒRIA -->
+<div class="tl-item">
+<div class="tl-content panel-orange" onclick="toggle(this)">
+<div class="tl-era">1r eix: Prehistòria</div>
+<div class="tl-desc">Les primeres imatges de la humanitat ja explicaven històries. Les pintures rupestres de Lascaux (França) són la llavor del còmic!<span class="tl-sessions">~1-2 sessions</span></div>
+<span class="tl-toggle"></span>
+<div class="tl-detail">
+<!-- TASCA 1: VÍDEOS -->
+<div class="session-block">
+<div class="session-title">Tasca 1 — Visionat i resum (pestanya «Prehistòria» del Sites)</div>
+            Mireu <strong>1 o 2 vídeos</strong> dels que teniu a continuació i escriviu un <strong>resum breu</strong> a la pestanya Prehistòria del vostre Google Sites. El resum ha d'incloure: <em>de què tracta, què us ha semblat més interessant i quina connexió té amb el còmic.</em>
+<div class="res-box" style="margin-top:10px;">
+<div class="res-box-title">Vídeo</div>
+<a class="res-link" href="https://www.youtube.com/watch?v=U2WF6QEHQeo" target="_blank">
+<span class="badge">YouTube</span>Marcel i el seu gos — La descoberta de les coves de Lascaux
+              </a>
+</div>
+<div class="res-box">
+<div class="res-box-title">Recursos complementaris (opcionals)</div>
+<a class="res-link" href="https://lascaux.fr/en/" target="_blank">
+<span class="badge verd">Web oficial</span>Lascaux · Lloc web oficial de la cova
+              </a>
+<a class="res-link" href="https://www.bradshawfoundation.com/lascaux/" target="_blank">
+<span class="badge blau">Recurs</span>Bradshaw Foundation · The Cave Art Paintings
+              </a>
+</div>
+</div>
+<!-- TASCA 2: CÒMIC -->
+<div class="session-block" style="border-left-color:#FF6B00;">
+<div class="session-title">Tasca 2 — Crea el teu còmic prehistòric (màx. 3 vinyetes)</div>
+<div style="background:#FFF3E0;border:2px dashed #FF6B00;border-radius:8px;padding:12px;margin:10px 0;font-size:.88rem;">
+<strong>Enunciat:</strong><br/>
+              Crea un <strong>còmic breu de màxim 3 vinyetes</strong> amb personatges de l'època prehistòrica. Els personatges han de tenir:
+              <ul class="fancy" style="margin-top:6px;">
+<li>Aspecte físic propi de la Prehistòria (vestimenta, eines, entorn)</li>
+<li>Una situació o mini-aventura en 3 moments: <em>inici · conflicte · resolució</em></li>
+<li>Almenys una bafarada o text a les vinyetes</li>
+</ul>
+</div>
+<!-- Mini mockup 3 vinyetes -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0;">
+<div style="border:3px solid #000;border-radius:8px;background:#FFE8CC;padding:10px;text-align:center;min-height:80px;">
+<div style="font-weight:900;font-size:.75rem;margin-bottom:4px;">VINYETA 1</div>
+<div style="font-size:1.4rem;"></div>
+<div style="font-size:.7rem;color:#555;margin-top:4px;font-style:italic;">Inici · Presentació</div>
+</div>
+<div style="border:3px solid #000;border-radius:8px;background:#FFE8CC;padding:10px;text-align:center;min-height:80px;">
+<div style="font-weight:900;font-size:.75rem;margin-bottom:4px;">VINYETA 2</div>
+<div style="font-size:1.4rem;"></div>
+<div style="font-size:.7rem;color:#555;margin-top:4px;font-style:italic;">Conflicte · Problema</div>
+</div>
+<div style="border:3px solid #000;border-radius:8px;background:#FFE8CC;padding:10px;text-align:center;min-height:80px;">
+<div style="font-weight:900;font-size:.75rem;margin-bottom:4px;">VINYETA 3</div>
+<div style="font-size:1.4rem;"></div>
+<div style="font-size:.7rem;color:#555;margin-top:4px;font-style:italic;">Resolució · Final</div>
+</div>
+</div>
+<div class="res-box">
+<div class="res-box-title">Eines digitals per crear el còmic</div>
+<a class="res-link" href="https://www.canva.com/create/comics/" target="_blank">
+<span class="badge verd">Recomanat</span>Canva · Plantilles de còmic
+              </a>
+<a class="res-link" href="https://www.pixton.com" target="_blank">
+<span class="badge blau">Recomanat</span>Pixton · Personatges i vinyetes en 3D
+              </a>
+</div>
+<div style="background:#E8F5E9;border:2px solid #00B050;border-radius:8px;padding:10px;margin-top:10px;font-size:.85rem;">
+<strong>Lliurament:</strong> Inseriu el còmic acabat a la pestanya <strong>«Prehistòria»</strong> del vostre Google Sites, just a sota del resum del vídeo.
+            </div>
+</div>
+<!-- INSPIRACIÓ VISUAL -->
+<div class="session-block" style="border-left-color:#CCA800;">
+<div class="session-title">Inspiració visual — Imatges IA lliures</div>
+<p style="font-size:.87rem;margin-bottom:8px;">Feu servir aquestes imatges generades amb IA per inspirar-vos a l'hora de dissenyar el vostre personatge prehistòric. Totes són de lliure ús!</p>
+<div class="res-box">
+<div class="res-box-title">Imatges de referència lliures (Pixabay)</div>
+<a class="res-link" href="https://pixabay.com/images/search/prehistoric%20man/" target="_blank">
+<span class="badge verd">Lliure ús</span>Pixabay — personatges prehistòrics
+              </a>
+</div>
+<div class="res-box">
+<div class="res-box-title">Vectors d'estil còmic (Vecteezy)</div>
+<a class="res-link" href="https://www.vecteezy.com/free-vector/prehistoric-cartoon" target="_blank">
+<span class="badge verd">Lliure ús</span>Vecteezy — vectors prehistòrics estil dibuix/còmic
+              </a>
+</div>
+<div class="res-box">
+<div class="res-box-title">Còmic de neandertal (Dreamstime)</div>
+<a class="res-link" href="https://es.dreamstime.com/illustration/c%C3%B3mic-neandertal.html" target="_blank">
+<span class="badge blau">Comprovar llicència</span>Dreamstime — il·lustració còmic neandertal
+              </a>
+</div>
+<div class="res-box">
+<div class="res-box-title">Crea el teu personatge amb IA — gratuït, sense registre</div>
+<a class="res-link" href="https://raphael.app/" target="_blank">
+<span class="badge verd">Gratuït · Sense registre</span>Raphael AI — escriu una descripció i genera la imatge
+              </a>
+</div>
+<div style="background:#FFF3E0;border:2px dashed #FF6B00;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:.82rem;">
+<strong>Consell:</strong> Per generar un personatge prehistòric, proveu prompts com: <em>«prehistoric caveman character, comic style, stone age, flat illustration»</em>
+</div>
+</div>
+<strong>Reflexió:</strong> Les pintures rupestres narren accions en seqüència... no és el mateix que una vinyeta?
+        </div>
+<span class="tl-tag" style="background:#FF6B00;color:#fff;border-color:#000;">Narració gràfica primitiva</span>
+</div>
+<div class="tl-dot" style="background:#FF6B00;"></div>
+<div style="width:calc(50% + 16px)"></div>
+</div>
+<!-- 2 EGIPTE -->
+<div class="tl-item">
+<div style="width:calc(50% + 16px)"></div>
+<div class="tl-dot" style="background:#CCA800;"></div>
+<div class="tl-content panel-yellow" onclick="toggle(this)">
+<div class="tl-era">2n eix: Món Egipci</div>
+<div class="tl-desc"><em>El Viatge per l'Inframón.</em> El Llibre dels Morts egipci és un còmic de fa 3.000 anys: imatges + text + narració seqüencial. Seguirem el viatge d'un mort per l'inframón i crearem el nostre propi papir!<span class="tl-sessions">~3 sessions</span></div>
+<span class="tl-toggle"></span>
+<div class="tl-detail">
+<div class="session-block">
+<div class="session-title">Visionat — El viatge al més enllà</div>
+<div class="res-box">
+<div class="res-box-title">Vídeo</div>
+<a class="res-link" href="https://www.youtube.com/watch?v=Nht6Rnt4nrA" target="_blank">
+<span class="badge">TED-Ed</span>El Libro Egipcio de los Muertos: guía al inframundo
+              </a>
+</div>
+            Mentre el veieu, identifiqueu: quins déus apareixen? Quines proves ha de superar el mort? Com ho mostra el papir en seqüència, com si fossin vinyetes?
+          </div>
+<div class="session-block">
+<div class="session-title">Activitat — El meu papir de còmic</div>
+            Observeu el <a href="https://www.britishmuseum.org/collection/object/Y_EA10470-3" style="color:#CCA800;font-weight:bold;" target="_blank">Papir d'Ani</a> al British Museum i fixeu-vos en la composició: figures de perfil, franges horitzontals, símbols al costat de cada déu.
+            <br/><br/>
+            Creeu un <strong>mini-còmic estil papir</strong> (màx. 3 vinyetes) on un personatge vostre viatja per l'inframón egipci. Afegiu-lo al Google Sites amb una llegenda breu.
+            <br/><br/>
+<div style="background:#FFF8DC;border:2px dashed #CCA800;border-radius:8px;padding:8px 12px;font-size:.85rem;">
+<strong>Extra divertit:</strong> Escriviu el vostre nom en <a href="https://lexiquetos.org/nombres-jeroglificos/" style="color:#CCA800;font-weight:bold;" target="_blank">jeroglífics</a> i afegiu-lo com a signatura al còmic!
+            </div>
+<div class="res-box" style="margin-top:10px;">
+<div class="res-box-title">Eines digitals</div>
+<a class="res-link" href="https://www.canva.com/create/comics/" target="_blank">
+<span class="badge verd">Recomanat</span>Canva · Plantilles de còmic
+              </a>
+<a class="res-link" href="https://www.pixton.com" target="_blank">
+<span class="badge blau">Recomanat</span>Pixton · Personatges i vinyetes
+              </a>
+</div>
+</div>
+<strong>Reflexió:</strong> Els jeroglífics combinen imatge i text en seqüència... no és exactament el que fa una vinyeta de còmic?
+        </div>
+<span class="tl-tag" style="background:#FFE600;color:#000;border-color:#000;">Imatge + text = còmic!</span>
+</div>
+</div>
+<!-- 3 MÓN CLÀSSIC -->
+<div class="tl-item">
+<div class="tl-content panel-blue" onclick="toggle(this)">
+<div class="tl-era">3r eix: Món Clàssic</div>
+<div class="tl-desc">Grècia i Roma a través del còmic: visionat de <strong>«Astèrix i Obèlix: La Residència dels Déus»</strong> i creació col·lectiva d'una versió en còmic de tota la pel·lícula!<span class="tl-sessions">~2-3 sessions</span></div>
+<span class="tl-toggle"></span>
+<div class="tl-detail">
+<div class="session-block">
+<div class="session-title">Sessió 1 — Visionat de la pel·lícula</div>
+<div class="res-box">
+<div class="res-box-title">Pel·lícula d'animació (2014)</div>
+<p style="font-size:.87rem;color:#555;margin:4px 0 6px;">La professora us proporcionarà l'accés a la pel·lícula quan arribi el moment.</p>
+<a class="res-link" href="https://www.youtube.com/watch?v=RyEup8sBUQc" target="_blank">
+<span class="badge blau">YouTube</span>Tràiler oficial «Le Domaine des Dieux»
+              </a>
+</div>
+            Mentre veieu la pel·lícula, fixeu-vos en l'estructura narrativa: com es divideix en escenes? Quins personatges protagonitzen cada moment? Com usa l'humor per retratar romans i celtes?
+          </div>
+<div class="session-block">
+<div class="session-title">Sessions 2-3 — El còmic col·lectiu d'Astèrix</div>
+<p>La classe crearà una <strong>versió en còmic de tota la pel·lícula</strong>, escena per escena, usant Canva i la IA integrada.</p>
+<div style="background:#EEF4FF;border:2px solid #005FCC;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.88rem;">
+<strong>Com s'organitza:</strong>
+<ul style="margin:8px 0 0;padding-left:18px;line-height:1.8;">
+<li><strong>Grups de 3 persones (màxim 4)</strong>, assignats per la professora. Cada grup s'encarrega d'una escena/capítol de la pel·lícula i la resumeix en vinyetes de Canva, generant les imatges amb la <strong>IA de Canva</strong>.</li>
+<li><strong>Responsables de muntatge</strong> (assignats per la professora): uneixen totes les escenes en un únic Canva que mostri el contingut global de la pel·lícula en format còmic.</li>
+</ul>
+</div>
+<div class="res-box">
+<div class="res-box-title">Materials de suport (proporcionats per la professora)</div>
+<div class="res-link" style="cursor:default;">
+<span class="badge">PDF</span>Còmic original «Astèrix: La Residencia de los Dioses» (en castellà) · La professora us el compartirà per Google Classroom o Drive
+              </div>
+<div class="res-link" style="cursor:default;">
+<span class="badge blau">Guió</span>Guió elaborat per la professora · Per orientar el resum de cada escena
+              </div>
+</div>
+<div class="res-box">
+<div class="res-box-title">Eina de creació</div>
+<a class="res-link" href="https://www.canva.com/create/comics/" target="_blank">
+<span class="badge verd">Recomanat</span>Canva · Plantilles de còmic + IA integrada per generar imatges
+              </a>
+</div>
+<div style="background:#C8E6FF;border:2px dashed #005FCC;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:.82rem;">
+<strong>Consell per a la IA de Canva:</strong> Per generar personatges d'estil Astèrix: <em>«roman soldier cartoon, comic style, funny, colorful»</em> o <em>«celtic village cartoon scene, Asterix style illustration»</em>
+</div>
+</div>
+<strong>Reflexió:</strong> Astèrix ens parla de poder, resistència i identitat cultural amb humor. Pot un còmic ser alhora divertit i una crítica social?
+        </div>
+<span class="tl-tag" style="background:#005FCC;color:#fff;border-color:#000;">Còmic col·lectiu · Humor · Crítica social</span>
+</div>
+<div class="tl-dot" style="background:#005FCC;color:#fff;"></div>
+<div style="width:calc(50% + 16px)"></div>
+</div>
+<!-- 4è eix eliminat (Món Medieval) -->
+<!-- 4 MODERN/CONTEMPORANI -->
+<div class="tl-item">
+<div class="tl-content panel-green" onclick="toggle(this)">
+<div class="tl-era">4t eix: Èpoques Moderna i Contemporània</div>
+<div class="tl-desc">Del dibuix a la caricatura: aprendrem a dibuixar-nos a nosaltres mateixos seguint els tutorials del dibuixant <strong>Ivanevsky</strong>. Aquesta habilitat serà la clau per protagonitzar el projecte final!<span class="tl-sessions">~2-3 sessions</span></div>
+<span class="tl-toggle"></span>
+<div class="tl-detail">
+<div class="session-block">
+<div class="session-title">Sessions 1-2 — Tutorials de caricatura amb Ivanevsky</div>
+<p style="font-size:.87rem;margin-bottom:8px;">Ivanevsky és un dibuixant especialista en caricatures. Seguiu els seus tutorials per aprendre les tècniques bàsiques de la caricatura de còmic.</p>
+<div class="res-box">
+<div class="res-box-title">Tutorials recomanats</div>
+<a class="res-link" href="https://www.youtube.com/watch?v=8aAjCsoeObU" target="_blank">
+<span class="badge">YouTube</span>Ivanevsky — Caricatures en moviment
+              </a>
+<a class="res-link" href="https://www.youtube.com/watch?v=IxP0N6SX0zU" target="_blank">
+<span class="badge blau">YouTube</span>Ivanevsky — Diferent tipus de caps
+              </a>
+<a class="res-link" href="https://www.youtube.com/watch?v=4Po8KhVpfhs" target="_blank">
+<span class="badge verd">YouTube</span>Ivanevsky — Caricatures digitals
+              </a>
+<a class="res-link" href="https://www.youtube.com/playlist?list=PLKWKvlkRePWN0j1kVDZWORA_kRY9K1Uln" target="_blank">
+<span class="badge">YouTube</span>Canal Ivanevsky — Llista completa de tutorials
+              </a>
+</div>
+</div>
+<div class="session-block">
+<div class="session-title">Activitat — La teva autocaricatura</div>
+            Després de veure els tutorials, creeu la vostra pròpia <strong>autocaricatura</strong> estil còmic: exagereu els trets que us defineixen, useu el color i la línia per donar personalitat.
+            <br/><br/>
+            Afegiu la caricatura al vostre Google Sites (tab Èpoques Moderna i Contemporània) acompanyada d'una breu reflexió: quins trets heu exagerat i per quins motius?
+            <br/><br/>
+<div style="background:#FFFDE7;border:2px dashed #FFCA28;border-radius:8px;padding:8px 12px;font-size:.87rem;">
+<strong>Connexió amb el projecte final:</strong> Aquesta autocaricatura serà el vostre personatge protagonista del còmic de tercer trimestre — el dibuixareu a mà sobre cartolina, on vosaltres mateixos sereu els herois de la història a l'institut!
+            </div>
+</div>
+<strong>Reflexió:</strong> La caricatura exagera per dir la veritat. Quins trets físics o de personalitat heu volgut destacar de vosaltres mateixos? Què diu una caricatura de qui som?
+        </div>
+<span class="tl-tag" style="background:#00B050;color:#fff;border-color:#000;">Caricatura · Autoretrat · Còmic modern</span>
+</div>
+<div class="tl-dot" style="background:#00B050;color:#fff;"></div>
+<div style="width:calc(50% - 50px)"></div>
+</div>
+</div>
+</section>
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-icon"></div><div class="divider-line"></div></div>
+<!-- ═══════════════════════════════ ACTIVITATS ═══════════════ -->
+<section id="activitats">
+<div class="section-title">
+<div class="icon"></div>
+    Les Activitats del Curs
+  </div>
+<!-- PROGRESS OVERVIEW -->
+<div class="progress-wrap">
+<div class="progress-label"><span>Progrés del curs (35 sessions)</span><span>0 / 35</span></div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" id="mainbar" style="width:0%;background:linear-gradient(90deg,#FFE600,#FF6B00);"></div>
+</div>
+</div>
+<div class="cards-grid">
+<!-- ACT 0 -->
+<div class="card panel-yellow" style="grid-column: 1 / -1;">
+<div class="card-header" style="background:#FFE600;border-bottom:4px solid #000;">
+<span class="card-num">0</span>
+<span class="card-icon"></span>
+<div class="card-title">Activitat Inicial: El vostre Google Sites</div>
+</div>
+<div class="card-body">
+<p>Creareu la vostra <strong>pàgina web personal</strong> des de Google Classroom. El Sites tindrà una <strong>pestanya per a cada període històric</strong> que anireu construint al llarg del curs. Al final del curs serà el vostre <em>portafoli digital complet</em> del viatge pel món del còmic.</p>
+<br/>
+<!-- SITES MOCKUP -->
+<div style="border:4px solid #000;border-radius:12px;overflow:hidden;box-shadow:5px 5px 0 #000;max-width:680px;margin:0 auto;">
+<!-- Barra del navegador -->
+<div style="background:#333;padding:8px 14px;display:flex;align-items:center;gap:8px;">
+<span style="width:12px;height:12px;background:#FF5F57;border-radius:50%;display:inline-block;border:1px solid #000;"></span>
+<span style="width:12px;height:12px;background:#FFBD2E;border-radius:50%;display:inline-block;border:1px solid #000;"></span>
+<span style="width:12px;height:12px;background:#28C840;border-radius:50%;display:inline-block;border:1px solid #000;"></span>
+<div style="flex:1;background:#555;border-radius:4px;padding:4px 10px;font-size:.75rem;color:#ddd;font-family:monospace;">sites.google.com/view/un-viatge-de-comic-nom-cognom</div>
+</div>
+<!-- Capçalera del Sites -->
+<div style="background:#FFE600;border-bottom:3px solid #000;padding:12px 20px;display:flex;align-items:center;gap:12px;">
+<span style="font-family:'Bangers',cursive;font-size:1.4rem;letter-spacing:1px;">UN VIATGE DE CÒMIC</span>
+<span style="font-size:.8rem;color:#555;">el meu portafoli digital</span>
+</div>
+<!-- Pestanyes del Sites -->
+<div style="display:flex;border-bottom:3px solid #000;overflow-x:auto;background:#fff;">
+<div style="padding:8px 14px;font-weight:900;font-size:.82rem;background:#FF6B00;color:#fff;border-right:2px solid #000;white-space:nowrap;">Prehistòria</div>
+<div style="padding:8px 14px;font-weight:700;font-size:.82rem;border-right:2px solid #000;color:#888;white-space:nowrap;">Egipte</div>
+<div style="padding:8px 14px;font-weight:700;font-size:.82rem;border-right:2px solid #000;color:#888;white-space:nowrap;">Món Clàssic</div>
+<div style="padding:8px 14px;font-weight:700;font-size:.82rem;color:#888;white-space:nowrap;">Modern/Contemp.</div>
+</div>
+<!-- Contingut d'exemple (pestanya Prehistòria activa) -->
+<div style="background:#FFF9E6;padding:18px 20px;font-size:.85rem;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div style="background:#fff;border:2px solid #000;border-radius:8px;padding:10px;">
+<div style="font-weight:900;font-size:.78rem;margin-bottom:6px;text-transform:uppercase;color:#FF6B00;">Resum del vídeo</div>
+<div style="color:#555;font-size:.8rem;line-height:1.5;">Les pintures de Lascaux daten de fa 17.000 anys. Els artistes prehistòrics usaven ocre, carbó i manganès per crear imatges en seqüència que narraven escenes de caça...</div>
+</div>
+<div style="background:#fff;border:2px solid #000;border-radius:8px;padding:10px;">
+<div style="font-weight:900;font-size:.78rem;margin-bottom:6px;text-transform:uppercase;color:#FF6B00;">El meu còmic (3 vinyetes)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;">
+<div style="background:#FFE8CC;border:2px solid #000;border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">1⃣</div>
+<div style="background:#FFE8CC;border:2px solid #000;border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">2⃣</div>
+<div style="background:#FFE8CC;border:2px solid #000;border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">3⃣</div>
+</div>
+<div style="color:#555;font-size:.75rem;margin-top:4px;">Màx. 3 vinyetes · Canva / Pixton</div>
+</div>
+</div>
+</div>
+<br/>
+<p style="font-size:.9rem;"><strong>Cada pestanya contindrà:</strong> el resum del vídeo (o vídeos) de l'època + el còmic creat amb eines digitals + reflexions. Anireu completant el Sites al llarg de tot el curs.</p>
+</div>
+<div class="card-footer">
+<span class="pill yellow">Individual</span>
+<span class="pill blue">Google Sites</span>
+<span class="pill white">1 sessió inicial + s'actualitza tot el curs</span>
+</div>
+</div>
+<!-- GUIA SITES -->
+<div class="card" style="grid-column: 1 / -1; border-color:#005FCC;">
+<div class="card-header" style="background:#005FCC;border-bottom:4px solid #000;">
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Com crear el vostre Google Sites pas a pas</div>
+</div>
+<div class="card-body">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;">
+<!-- PAS 1 -->
+<div style="border:3px solid #000;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #000;">
+<div style="background:#FFE600;border-bottom:3px solid #000;padding:10px 14px;display:flex;align-items:center;gap:10px;">
+<span style="font-family:'Bangers',cursive;font-size:1.8rem;line-height:1;">1</span>
+<span style="font-weight:900;font-size:.95rem;">Crea el Sites</span>
+</div>
+<div style="padding:12px 14px;font-size:.88rem;line-height:1.6;background:#fff;">
+              Ves a <strong>sites.google.com</strong> i clica el botó <strong>«+»</strong> per crear un lloc nou. Posa-li un nom com:<br/>
+<code style="background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:.82rem;">Un viatge de còmic – NomCognom</code>
+</div>
+</div>
+<!-- PAS 2 -->
+<div style="border:3px solid #000;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #000;">
+<div style="background:#FFE600;border-bottom:3px solid #000;padding:10px 14px;display:flex;align-items:center;gap:10px;">
+<span style="font-family:'Bangers',cursive;font-size:1.8rem;line-height:1;">2</span>
+<span style="font-weight:900;font-size:.95rem;">Afegeix les pestanyes</span>
+</div>
+<div style="padding:12px 14px;font-size:.88rem;line-height:1.6;background:#fff;">
+              Al panell de la dreta, clica <strong>«Pàgines»</strong>. Afegeix una pàgina per a cada període fent clic a <strong>«+ Afegeix pàgina»</strong>:<br/>
+<div style="margin-top:6px;display:flex;flex-direction:column;gap:3px;">
+<span style="background:#FFE8CC;border:1.5px solid #000;border-radius:4px;padding:2px 8px;font-size:.8rem;font-weight:700;">Prehistòria</span>
+<span style="background:#FFFACC;border:1.5px solid #000;border-radius:4px;padding:2px 8px;font-size:.8rem;font-weight:700;">Món Egipci</span>
+<span style="background:#C8E6FF;border:1.5px solid #000;border-radius:4px;padding:2px 8px;font-size:.8rem;font-weight:700;">Món Clàssic</span>
+<span style="background:#C6EFCE;border:1.5px solid #000;border-radius:4px;padding:2px 8px;font-size:.8rem;font-weight:700;">Èpoques Moderna i Contemp.</span>
+</div>
+</div>
+</div>
+<!-- PAS 3 -->
+<div style="border:3px solid #000;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #000;">
+<div style="background:#FFE600;border-bottom:3px solid #000;padding:10px 14px;display:flex;align-items:center;gap:10px;">
+<span style="font-family:'Bangers',cursive;font-size:1.8rem;line-height:1;">3</span>
+<span style="font-weight:900;font-size:.95rem;">Comparteix amb la profe</span>
+</div>
+<div style="padding:12px 14px;font-size:.88rem;line-height:1.6;background:#fff;">
+              Clica el botó <strong>«Comparteix»</strong> (icona de persona) a la part superior dreta.<br/><br/>
+              Afegeix l'adreça:<br/>
+<code style="background:#f0f0f0;padding:3px 8px;border-radius:4px;font-size:.82rem;display:inline-block;margin-top:4px;">marta.coll@insvoltreganes.cat</code><br/><br/>
+              Assegura't de donar-li rol d'<strong>«Editor/a»</strong> per tal que pugui veure i comentar el teu treball.
+            </div>
+</div>
+<!-- PAS 4 -->
+<div style="border:3px solid #000;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #000;">
+<div style="background:#FFE600;border-bottom:3px solid #000;padding:10px 14px;display:flex;align-items:center;gap:10px;">
+<span style="font-family:'Bangers',cursive;font-size:1.8rem;line-height:1;">4</span>
+<span style="font-weight:900;font-size:.95rem;">Publica el Sites</span>
+</div>
+<div style="padding:12px 14px;font-size:.88rem;line-height:1.6;background:#fff;">
+              Clica el botó <strong>«Publica»</strong> (part superior dreta) i tria qui el pot veure. Pots deixar-lo visible per a <strong>«Tothom a l'escola»</strong> o només per a les persones amb l'enllaç.<br/><br/>
+              Cada vegada que facis canvis, torna a clicar <strong>«Publica»</strong> per actualitzar-lo.
+            </div>
+</div>
+<!-- PAS 5 -->
+<div style="border:3px solid #000;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #000;grid-column:span 1;">
+<div style="background:#00B050;border-bottom:3px solid #000;padding:10px 14px;display:flex;align-items:center;gap:10px;">
+<span style="font-family:'Bangers',cursive;font-size:1.8rem;line-height:1;color:#fff;">✓</span>
+<span style="font-weight:900;font-size:.95rem;color:#fff;">Afegeix contingut a cada pàgina</span>
+</div>
+<div style="padding:12px 14px;font-size:.88rem;line-height:1.6;background:#E8F5E9;">
+              A cada pestanya hi ha d'haver:<br/>
+<ul class="fancy" style="margin-top:6px;">
+<li>El <strong>resum</strong> del vídeo (text o llista)</li>
+<li>El <strong>còmic</strong> inserit com a imatge (exporta'l de Canva/Pixton com a PNG i puja'l)</li>
+<li>Les teves <strong>reflexions</strong> sobre l'època i el còmic</li>
+</ul>
+</div>
+</div>
+<!-- CONSELL -->
+<div style="border:3px dashed #E8003D;border-radius:10px;padding:14px;background:#FFD6E0;display:flex;flex-direction:column;justify-content:center;">
+<div style="font-family:'Bangers',cursive;font-size:1.1rem;letter-spacing:1px;margin-bottom:8px;">Consells útils</div>
+<ul class="fancy" style="font-size:.87rem;line-height:1.7;">
+<li>Pots personalitzar colors i capçalera per donar-li estil de còmic!</li>
+<li>Utilitza el bloqueig de text <strong>«Títol»</strong> per a cada secció de la pàgina</li>
+<li>Insereix vídeos directament amb <strong>«Insereix → YouTube»</strong></li>
+<li>Desa els canvis sovint amb <strong>Ctrl+S</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- ACT 1 -->
+<div class="card panel-orange">
+<div class="card-header" style="background:#FF6B00;border-bottom:4px solid #000;">
+<span class="card-num">1</span>
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Projecció de Vídeos i Reportatges</div>
+</div>
+<div class="card-body">
+        Per a cada eix cronològic veureu un <strong>vídeo o reportatge</strong> que us situarà en el context social i cultural de l'època. A partir del visionat, extraureu la informació clau i la relacionareu amb el món del còmic.
+        <br/><br/>
+<em>5 eixos cronològics · discussió i apunts al Sites</em>
+</div>
+<div class="card-footer">
+<span class="pill yellow">Individual</span>
+<span class="pill orange">Vídeos</span>
+<span class="pill white">7 sessions</span>
+</div>
+</div>
+<!-- ACT 2 -->
+<div class="card panel-blue"><div class="card-header" style="background:#005FCC;border-bottom:4px solid #000;"><span class="card-num">2</span><span class="card-icon">⭐</span><div class="card-title" style="color:#fff;">El meu Quadern de Superheroi (Google Sites)</div></div><div class="card-body">
+<p>Després de cada eix cronològic afegeix al teu Google Sites:</p>
+<ol>
+<li><strong>Què he après?</strong> (3 idees clau)</li>
+<li><strong>Autoavaluació</strong></li>
+<li><strong>El meu següent repte</strong></li>
+</ol>
+<table style="width:100%;border-collapse:collapse;border:2px solid #000">
+<tr><th>Aspecte</th><th>😕</th><th>🙂</th><th>😎</th></tr>
+<tr><td>Entenc el context històric</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Relaciono història i còmic</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Creo un còmic coherent</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Participo activament</td><td>☐</td><td>☐</td><td>☐</td></tr>
+</table>
+<p><strong>La cosa que m'ha sortit millor:</strong> ____________________</p>
+<p><strong>La propera vegada intentaré:</strong> ____________________</p>
+<p><strong>Insígnies:</strong> 🦴 𓂀 🏛️ 🎭 📚 🎨</p>
+</div></div>
+</div><!-- fi cards-grid fase 1-2 -->
+<!-- ═══ SEPARADOR 3r TRIMESTRE ═══ -->
+<div style="margin:40px 0 28px;border:4px solid #000;border-radius:16px;overflow:hidden;box-shadow:6px 6px 0 #000;">
+<div style="background:#000;color:#FFE600;font-family:'Bangers',cursive;font-size:1.8rem;letter-spacing:3px;padding:14px 24px;display:flex;align-items:center;gap:14px;">
+<span></span>3r TRIMESTRE — EL PROJECTE FINAL
+    </div>
+<div style="background:#FFFACC;padding:18px 24px;font-size:.97rem;line-height:1.7;">
+<strong>Atenció!</strong> Les activitats que veniu de fer (els mini-còmics de pràctica per a cada període) us han servit per aprendre el llenguatge del còmic i conèixer la seva història. Ara comença una fase diferent: el <strong>projecte final del curs</strong>.
+      <br/><br/>
+      A diferència dels exercicis anteriors, treballareu en <strong>grups de 4 o 5 persones</strong>, cadascú amb un <strong>rol específic</strong>, per crear un còmic <strong>fet a mà</strong> ambientat a l'<strong>Institut del Voltreganès</strong> a partir d'un <strong>guió que us proporcionarà la professora</strong> — cada grup classe rebrà un guió diferent. Cada escena serà una <strong>cartolina gran</strong> on dibuixareu i escriureu personatges, bafarades i fons a mà.
+    </div>
+</div>
+<div class="cards-grid">
+<!-- ACT 3 -->
+<div class="card panel-purple">
+<div class="card-header" style="background:#7B2FBE;border-bottom:4px solid #000;">
+<span class="card-num">3</span>
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">El Guió — proporcionat per la professora</div>
+</div>
+<div class="card-body">
+        La professora us proporcionarà un <strong>guió diferent per a cada grup classe</strong>. La història tindrà lloc a l'<strong>institut</strong> i <strong>vosaltres en sereu els protagonistes</strong>.
+        <br/><br/>
+        Cada membre del grup tindrà un <strong>rol determinat</strong>. A partir del guió, la feina del grup serà:
+        <ul class="fancy" style="margin-top:8px;">
+<li>Llegir i entendre bé la història i els personatges</li>
+<li>Assignar i assumir el rol de cadascú</li>
+<li>Planificar com distribuïu l'escena en vinyetes</li>
+<li>Preparar els diàlegs en <strong>català</strong></li>
+</ul>
+</div>
+<div class="card-footer">
+<span class="pill purple">Grups de 4-5</span>
+<span class="pill white">Rols individuals</span>
+<span class="pill white">10 sessions</span>
+</div>
+</div>
+<!-- ACT 4 -->
+<div class="card panel-red">
+<div class="card-header" style="background:#E8003D;border-bottom:4px solid #000;">
+<span class="card-num">4</span>
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Creació del Còmic Final</div>
+</div>
+<div class="card-body">
+        Amb el guió a les mans, creareu el còmic <strong>a mà</strong> aplicant tot el que heu après durant el curs. Cada escena s'elabora sobre una <strong>cartolina gran</strong>:
+        <ul class="fancy" style="margin-top:8px;">
+<li>Estructura de vinyetes i enquadraments dibuixats a mà</li>
+<li>Personatges basats en les <strong>autocaricatures</strong> treballades al 4t eix</li>
+<li>Bafarades i diàlegs escrits a mà, en <strong>català</strong></li>
+<li>Fons, color i línies d'acció pintats manualment</li>
+</ul>
+<div style="margin-top:10px;padding:8px 12px;background:#FFD6E0;border:2px solid #E8003D;border-radius:8px;font-size:.85rem;display:flex;gap:10px;align-items:flex-start;">
+<span style="font-size:1.2rem;flex-shrink:0;"></span>
+<div><strong>Requisits formals:</strong> entre <strong>5 i 6 vinyetes per escena</strong> · cartolina gran per escena · tots els textos en <strong>català</strong> · ambientat a l'<strong>Institut del Voltreganès</strong></div>
+</div>
+</div>
+<div class="card-footer">
+<span class="pill red">Grups de 4-5</span>
+<span class="pill orange">Fet a mà · Cartolina</span>
+<span class="pill white">14 sessions</span>
+</div>
+</div>
+<!-- ACT 5 -->
+<div class="card panel-green">
+<div class="card-header" style="background:#00B050;border-bottom:4px solid #000;">
+<span class="card-num">5</span>
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Presentació al Grup Classe</div>
+</div>
+<div class="card-body">
+        Cada grup <strong>presenta el seu còmic final</strong> al grup classe amb suport digital. Cada membre explicarà la seva part d'acord amb el rol que ha tingut durant el procés.
+        <br/><br/>
+        El còmic s'exposarà a l'aula i es penjarà al Google Sites com a tancament del portafoli del curs.
+        <br/><br/>
+<em>Moment de celebrar tot el que heu après! </em>
+</div>
+<div class="card-footer">
+<span class="pill green">Grups de 4-5 + Grup classe</span>
+<span class="pill blue">Presentació oral</span>
+<span class="pill white">3 sessions</span>
+</div>
+</div>
+</div><!-- fi cards-grid 3r trimestre -->
+
+<div style="margin-top:32px;padding:16px 20px;background:#FFFACC;border:3px dashed #CCA800;border-radius:12px;font-size:.92rem;line-height:1.7;">
+<strong>Nota sobre la temporització:</strong> Les sessions s'adapten al ritme real del curs. La distribució d'activitats és orientativa i pot variar en funció dels imprevistos propis de l'activitat escolar.
+  </div>
+</section>
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-icon"></div><div class="divider-line"></div></div>
+<!-- ═══════════════════════════════ AVALUACIÓ ═══════════════════ -->
+<section id="avaluacio">
+<div class="section-title">
+<div class="icon"></div>
+    Com us avaluarem?
+  </div>
+<div class="bubble">
+    L'avaluació té <strong>tres grans blocs</strong>: la comprensió dels vídeos i el context històric, la creació del còmic, i la presentació oral. Aquí teniu els nivells per a cada bloc. 
+  </div>
+<div style="height:30px"></div>
+<!-- RUBRIC 1 -->
+<div class="rubric">
+<div class="rubric-head">Bloc 1 · Comprensió del context històric</div>
+<div class="rubric-levels">
+<div class="rubric-level sat">
+<div class="level-name">Satisfactori <span class="stars"></span></div>
+        Entens el sentit global dels vídeos i identifiques alguns fets importants, però et costa veure les connexions entre els esdeveniments. El còmic reflecteix l'època de manera bàsica.
+      </div>
+<div class="rubric-level not">
+<div class="level-name">Notable <span class="stars"></span></div>
+        Coneixes bé el context i estableixes connexions entre els événements principals. El còmic mostra elements propis de l'època de manera precisa.
+      </div>
+<div class="rubric-level exc">
+<div class="level-name">Excel·lent <span class="stars"></span></div>
+        Mostres una comprensió profunda del context històric i l'apliques amb habilitat per crear un producte excel·lent. El vostre còmic destil·la l'essència de l'època.
+      </div>
+</div>
+</div>
+<!-- RUBRIC 2 -->
+<div class="rubric">
+<div class="rubric-head">Bloc 2 · Creació del còmic</div>
+<div class="rubric-levels">
+<div class="rubric-level sat">
+<div class="level-name">Satisfactori <span class="stars"></span></div>
+        El còmic és senzill i coherent, tot i que presenta algunes dificultats en la claredat o la cohesió del text. Segueixes les instruccions bàsiques de planificació.
+      </div>
+<div class="rubric-level not">
+<div class="level-name">Notable <span class="stars"></span></div>
+        El còmic és clar, coherent i ben estructurat. S'ajusta a la situació comunicativa i integra elements propis del còmic seguint l'eix temporal.
+      </div>
+<div class="rubric-level exc">
+<div class="level-name">Excel·lent <span class="stars"></span></div>
+        El còmic és excel·lent: clara, cohesionat i ben adequat. Apliques amb fluïdesa els coneixements sobre l'evolució del còmic en tot el procés de creació.
+      </div>
+</div>
+</div>
+<!-- RUBRIC 3 -->
+<div class="rubric">
+<div class="rubric-head">Bloc 3 · Presentació oral</div>
+<div class="rubric-levels">
+<div class="rubric-level sat">
+<div class="level-name">Satisfactori <span class="stars"></span></div>
+        Expliques el còmic i els personatges amb certa estructura, tot i que en algun moment és difícil de seguir. Fas servir un suport digital de manera bàsica.
+      </div>
+<div class="rubric-level not">
+<div class="level-name">Notable <span class="stars"></span></div>
+        Exposes el còmic de manera estructurada i coherent. Combines bé el suport digital amb recursos verbals i no verbals.
+      </div>
+<div class="rubric-level exc">
+<div class="level-name">Excel·lent <span class="stars"></span></div>
+        La presentació és molt clara, fàcil de seguir i eficaç. Enriqueixes l'exposició amb un suport digital excel·lent i recursos expressius variats.
+      </div>
+</div>
+</div>
+<!-- COMPETÈNCIES -->
+<div class="cards-grid" style="margin-top:10px;">
+<div class="card panel-blue">
+<div class="card-header" style="background:#005FCC;border-bottom:4px solid #000;">
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Competència Digital</div>
+</div>
+<div class="card-body">
+        Gestionareu el vostre entorn digital d'aprenentatge: Google Sites, Canva, Pixton, Classroom. Seleccionareu les eines més adequades per a cada tasca.
+      </div>
+</div>
+<div class="card panel-green">
+<div class="card-header" style="background:#00B050;border-bottom:4px solid #000;">
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Aprendre a Aprendre</div>
+</div>
+<div class="card-body">
+        Fareu autoavaluació del vostre procés, buscareu fonts fiables per contrastar informació i traureu conclusions rellevants sobre el vostre aprenentatge.
+      </div>
+</div>
+</div>
+</section>
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-icon"></div><div class="divider-line"></div></div>
+<!-- ═══════════════════════════════ EINES ═══════════════════ -->
+<section id="eines">
+<div class="section-title">
+<div class="icon"></div>
+    Les Vostres Eines Digitals
+  </div>
+<div class="cards-grid">
+<div class="card panel-yellow">
+<div class="card-header" style="background:#FFE600;border-bottom:4px solid #000;">
+<span class="card-icon"></span>
+<div class="card-title">Canva</div>
+</div>
+<div class="card-body">Dissenyeu personatges, pàgines de còmic i presentacions visuales de manera professional i senzilla. Té plantilles de còmic!</div>
+<div class="card-footer">
+<span class="pill yellow">Personatges</span>
+<span class="pill yellow">Pàgines de còmic</span>
+</div>
+</div>
+<div class="card panel-orange">
+<div class="card-header" style="background:#FF6B00;border-bottom:4px solid #000;">
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Pixton</div>
+</div>
+<div class="card-body">Creeu personatges de còmic en 3D i genereu vinyetes i escenes directament a la plataforma. Ideal per a l'estil clàssic de còmic americà.</div>
+<div class="card-footer">
+<span class="pill orange">Vinyetes</span>
+<span class="pill orange">Personatges 3D</span>
+</div>
+</div>
+<div class="card panel-blue">
+<div class="card-header" style="background:#005FCC;border-bottom:4px solid #000;">
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Google Sites</div>
+</div>
+<div class="card-body">El vostre diari de viatge digital! Aquí anireu penjant totes les produccions, reflexions i el còmic final. Accessible des de Classroom.</div>
+<div class="card-footer">
+<span class="pill blue">Portfoli digital</span>
+<span class="pill blue">Diari del curs</span>
+</div>
+</div>
+<div class="card panel-green">
+<div class="card-header" style="background:#00B050;border-bottom:4px solid #000;">
+<span class="card-icon"></span>
+<div class="card-title" style="color:#fff;">Google Classroom</div>
+</div>
+<div class="card-body">Des d'aquí tindreu accés a tots els recursos, tasques, vídeos i instruccions de la professora. El punt de partida de cada sessió.</div>
+<div class="card-footer">
+<span class="pill green">Tasques</span>
+<span class="pill green">Recursos</span>
+</div>
+</div>
+</div>
+<!-- FINAL NOTE -->
+<div class="bubble" style="margin-top:48px; font-size:1.1rem; border-color:var(--red);">
+<strong>Recordeu:</strong> Al final del curs, el vostre còmic estarà exposat a l'aula i al vostre Google Sites. Serà la prova de tot el que heu après sobre la història, el llenguatge visual i la creació artística. <strong>Feu-lo vostre!</strong>
+</div>
+</section>
+<footer>
+  Institut del Voltreganès · PGA Llengües Estrangeres · 3r ESO · Curs 2026–2027
+</footer>
+<script>
+  // Toggle timeline items
+  function toggle(el) {
+    el.classList.toggle('open');
+  }
+
+  // Smooth scroll for nav
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+    });
+  });
+
+  // Highlight nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  // Animate progress bars on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('mainbar').style.width = '0%';
+    }, 300);
+  });
+</script>
+</body>
+</html>
